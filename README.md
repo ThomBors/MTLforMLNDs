@@ -2,7 +2,7 @@
 
 ![Multi-task deep learning model](image/MTL.png)
 
-This repository is the official __PyTorch__ implementation of our work: __Multi-task Deep Learning for the Multi-label Prediction of Neurodegenerative Diseases__, Subithed at J-BHI Special Issue on “Current Trends and Future Directions in Biomedical Data Science”, 2024.
+This repository is the official __PyTorch__ implementation of our work: __Multi-task Deep Learning for the Multi-label Prediction of Neurodegenerative Diseases__, Submitted at J-BHI Special Issue on “Current Trends and Future Directions in Biomedical Data Science”, 2024.
 
 ## Set up
 ### Enviroment
