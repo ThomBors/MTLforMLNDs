@@ -1,0 +1,26 @@
+EarlyStopper_min_delta: 1
+EarlyStopper_patience: 5
+architecture: CombinOptMTL
+batch size: 256
+dataset: ../../data/MRI_rois_20211114//MRI_rois_20211114.csv
+epochs: 500
+freeze_parametrs: Clean
+gamma: 0.5
+learning_rate: 0.001
+optimizer: Adagrad
+random state: 23
+scheduler: StepLR
+selected_diagnosis:
+- CN
+- AD
+- PD
+- LMCI
+- EMCI
+- MCI
+- FTD
+selected_gender:
+- M
+- F
+target: modified
+training_algortim: FAMO
+weight_decay: 0.00025
