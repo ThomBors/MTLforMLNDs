@@ -19,8 +19,8 @@ def dynamic_import_and_run(module_name, function_name):
 def main():
     # Add the current directory to sys.path to make sure submodules can be found
     sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-    #dynamic_import_and_run('STL.run_experiments', 'mainSTL')
-    # dynamic_import_and_run('MTL.run_experimentsCobMTL', 'mainMTL')
+    dynamic_import_and_run('STL.run_experiments', 'mainSTL')
+    dynamic_import_and_run('MTL.run_experimentsCobMTL', 'mainMTL')
     dynamic_import_and_run('MTL.run_resultsMTL','mainMTL')
     
 
