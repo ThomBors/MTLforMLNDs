@@ -2,7 +2,7 @@
 
 ![Multi-task deep learning model](image/MTL.png)
 
-This repository is the official __PyTorch__ implementation of our work: __Multi-task Deep Learning for the Multi-label Prediction of Neurodegenerative Diseases__, Subithed at J-BHI Special Issue on “Current Trends and Future Directions in Biomedical Data Science”, 2024.
+This repository is the official __PyTorch__ implementation of our work: __Multi-task Deep Learning for the Multi-label Prediction of Neurodegenerative Diseases__, Submitted at J-BHI Special Issue on “Current Trends and Future Directions in Biomedical Data Science”, 2024.
 
 ## Set up
 ### Enviroment
@@ -46,13 +46,13 @@ The folders in this repository are organised into two main folders
 MTLforMLNDs
 └── MTLExperiment     
     ├── MTL
-        ├── experiments_all
-        └── experiments_mtl
+    |   ├── experiments_all
+    |   └── experiments_mtl
     ├── Network
     ├── STL
-        ├── experiments_AlternativeNet50
-        ├── experiments_AlternativeNet500
-        └── experiments_stl
+    |   ├── experiments_AlternativeNet50
+    |   ├── experiments_AlternativeNet500
+    |   └── experiments_stl
     ├── MultiTask.log
     ├── singleTask.log
     └── run_dep.py
@@ -70,13 +70,13 @@ The MTL folder contains the code to train and test the different tuning techniqu
 
 ```
 MTLforMLNDs
-├── MTLDeploy
+└── MTLDeploy
     ├── MTL
-        ├── Results_mtl_Gender
-        └── experiments_mtl
+    |   ├── Results_mtl_Gender
+    |   └── experiments_mtl
     ├── Network
     ├── STL
-        └── experiments_stl
+    |   └── experiments_stl
     ├── Multi.log
     ├── single.log
     └── run_dep.py
