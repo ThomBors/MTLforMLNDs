@@ -147,6 +147,8 @@ def get_metric_and_best_threshold_from_roc_curve(y_test,y_pred,show_result):
     tn = (1 - fpr) * num_neg_class
     fn = (1 - tpr) * num_pos_class
     acc = (tp + tn) / (num_pos_class + num_neg_class)
+    prec = tp/(tp+fp)
+    rec = tp/(tp+fn)
     f1 = (2*tp) / (2*tp+fp+fn)
     best_threshold = thresholds[np.argmax(f1)]
 

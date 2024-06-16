@@ -15,8 +15,8 @@ from torch.nn.modules.module import Module
 from torch.utils.data import DataLoader, Dataset
 from torcheval.metrics import BinaryAUROC,BinaryAUPRC,BinaryF1Score
 
-from MTL.loss_function import BinaryCrossEntropy,BinaryCrossEntropy_CN,BinaryCrossEntropy_FL,focal_loss,BinaryCrossEntropyCN_FL
-import MTL.utils as utils
+from loss_function import BinaryCrossEntropy,BinaryCrossEntropy_CN,BinaryCrossEntropy_FL,focal_loss,BinaryCrossEntropyCN_FL
+import utils as utils
 
 ############################### traning istruction ###############################
 def train(model, dl_train,loss_fn,optimizer, scheduler,epoch,online, device='cpu'):

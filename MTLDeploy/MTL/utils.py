@@ -10,7 +10,7 @@ import torch
 from torch.utils.data import Dataset
 from torcheval.metrics import BinaryAUROC,BinaryAUPRC
 import logging
-from MTL.loss_function import UniformWeighting
+from loss_function import UniformWeighting
 
 ################# create custum data set class #################
 class AD_Dataset(Dataset):

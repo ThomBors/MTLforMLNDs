@@ -215,7 +215,6 @@ def SingleNetTunuing(net):
         dl_test = DataLoader(ds_test,batch_size=64, num_workers=0,shuffle=False)
         
 
-
         total_neurons,total_layers = utils._total_num_neurons(net)
 
         def init_weights(m):
@@ -229,7 +228,7 @@ def SingleNetTunuing(net):
 
         optimizer = optim.Adagrad(net.parameters(), lr=learning_rate,  weight_decay=weight_decay)
         scheduler = torch.optim.lr_scheduler.StepLR(optimizer,step_size=step_size, gamma=gamma)
-        #scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer,gamma=gamma)
+        # #scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer,gamma=gamma)
 
         # training loop
 
@@ -308,19 +307,19 @@ def SingleNetTunuing(net):
         result_validation['architecture'][r] = net.__class__.__name__
         result_validation['Gender'][r] = ','.join(selected_gender)
         result_validation['random_state'][r] = r
-        result_validation['accuracy'][r] = accuracy_score(y_test,prediction_thr)
-        result_validation['f1_score'][r] = f1_score(y_test,prediction_thr)
-        result_validation['AUC_ROC'][r] = roc_auc_score(y_test,prediction_thr)
-        fpr, tpr, thresholds = precision_recall_curve(y_test,prediction_thr)
+        result_validation['accuracy'][r] = accuracy_score(y_trut,prediction_thr)
+        result_validation['f1_score'][r] = f1_score(y_trut,prediction_thr)
+        result_validation['AUC_ROC'][r] = roc_auc_score(y_trut,prediction_thr)
+        fpr, tpr, thresholds = precision_recall_curve(y_trut,prediction_thr)
         try:
             result_validation['AUC_PR'][r] = auc(fpr, tpr)
         except:
             result_validation['AUC_PR'][r] = None
-        result_validation['precision_score'][r] = precision_score(y_test,prediction_thr)
-        result_validation['recall_score'][r] = recall_score(y_test,prediction_thr)
+        result_validation['precision_score'][r] = precision_score(y_trut,prediction_thr)
+        result_validation['recall_score'][r] = recall_score(y_trut,prediction_thr)
         result_validation['threshold'][r] = st['best_threshold']
-        result_validation['EarlyStopping'][r] = epoch
-        result_validation['balanced_accuracy_score'] = balanced_accuracy_score(y_test,prediction_thr)
+        result_validation['EarlyStopping'][r] = 50
+        result_validation['balanced_accuracy_score'] = balanced_accuracy_score(y_trut,prediction_thr)
         result_validation["total_neurons"][r]  = total_neurons
         result_validation["total_layers"][r]  = total_layers
         df_resultsv = pd.DataFrame(result_validation)
@@ -356,7 +355,7 @@ def SingleNetTunuing(net):
         result['precision_score'][r] = precision_score(y_test,prediction_thr)
         result['recall_score'][r] = recall_score(y_test,prediction_thr)
         result['threshold'][r] = st['best_threshold']
-        result['EarlyStopping'][r] = epoch
+        result['EarlyStopping'][r] = 50
         result['balanced_accuracy_score'] = balanced_accuracy_score(y_test,prediction_thr)
         result["total_neurons"][r]  = total_neurons
         result["total_layers"][r]  = total_layers

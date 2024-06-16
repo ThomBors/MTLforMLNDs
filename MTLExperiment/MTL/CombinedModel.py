@@ -28,7 +28,7 @@ from MTL.utils import AD_Dataset,Final_metrics
 from MTL.trainig_testing import train,test,train_FAMO,test_FAMO,train_FL,test_FL,train_FLAMO,test_FLAMO
 from MTL.loss_function import UniformWeighting,BinaryCrossEntropy,AutomaticWeightedLoss
 from MTL.earlyStopper import EarlyStopper,EarlyStopperMTL
-# from MTL.TransferLearningMetric import task_affitity
+from MTL.TransferLearningMetric import task_affitity
 
 from MTL.Network import PDNetwork,ADNetwork,CNNetwork,LMCINetwork,MCINetwork,EMCINetwork,FTDNetwork,MultiTaskModel
 
@@ -53,7 +53,8 @@ def run_model(path_roi,
               project_wandb,
               online,
               save_resultsCSV,
-              save_model):
+              save_model,
+              Task_affinityMetrics):
 
     print(r"""
         ___  ________ _           _     _          _                     _   _      _   
@@ -244,6 +245,7 @@ def run_model(path_roi,
         # Apply the initialization function to the eniert network multi_task_modelwork
         multi_task_model.apply(init_weights)
 
+
     ## enviroment settings
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     multi_task_model.to(device)
@@ -348,16 +350,31 @@ def run_model(path_roi,
         if early_stopper.early_stop(validation_loss):
             break
 
-        # if (epoch == 1 or epoch %step_size == 0):
-        #     task_affinity = task_affitity(multi_task_model,dl_train,dl_validation,
-        #                                     task_list = ['fcAD','fcPD','fcFTD','fcMCI','fcEMCI','fcLMCI'],
-        #                                     loss_fn = loss_fn,
-        #                                     learning_rate = learning_rate,
-        #                                     weight_decay = weight_decay,
-        #                                     step_size = step_size,
-        #                                     gamma = gamma,
-        #                                     device = device)
-        #     wandb.log(task_affinity)
+
+        if Task_affinityMetrics:
+            # if (epoch == 1 or epoch %step_size == 0):
+            task_affinity = task_affitity(multi_task_model,dl_train,dl_validation,
+                                            task_list = ['AD','PD','FTD','MCI','EMCI','LMCI'],
+                                            loss_fn = loss_fn,
+                                            learning_rate = learning_rate,
+                                            weight_decay = weight_decay,
+                                            step_size = step_size,
+                                            gamma = gamma,
+                                            device = device)
+            
+        
+            if online:
+                wandb.log(task_affinity)
+                
+            dictTA = {epoch: task_affinity}
+            ### save results
+            os.makedirs(result_folder, exist_ok=True)
+            os.makedirs(os.path.join(result_folder,path_result), exist_ok=True)
+
+            #### save taskAffinity file
+            with open(result_folder+'/'+path_result+'/task_affitity.yaml', 'a') as outfile:
+                yaml.dump(dictTA, outfile, default_flow_style=False)
+
 
         bar.set_postfix({'Train Loss' : train_loss,'validation loss':validation_loss})
     if online:
@@ -426,7 +443,7 @@ def run_model(path_roi,
 
     #### save model
     if save_model:
-        torch.save(net.state_dict(), 'network/'+net.__class__.__name__+str(random_stat)+'.pth')
+        torch.save(multi_task_model.state_dict(), 'network/'+multi_task_model.__class__.__name__+str(random_stat)+'.pth')
 
     
 
