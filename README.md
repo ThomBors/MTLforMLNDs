@@ -115,21 +115,11 @@ For reproducibility purposes, the file MRI_id.csv provides the IDs of the images
 
 Below, are provided additional images showing the training loss over steps for each of the disease considered. These images can help in understanding the convergence behavior and performance of the model.
 
+| | | |
+|-|-|-|
+![Alzheimer’s Disease BCE Loss](image/ADLoss.png) | ![Parkinson's Disease BCE Loss](image/PDloss.png) | ![Frontotemporal dementia BCE Loss](image/FTDLoss.png) 
+![Mild Cognitive Impairment](image/MCILoss.png) | ![Early Mild Cognitive Impairment](image/EMCILoss.png) | ![Late Mild Cognitive Impairment](image/LMCIloss.png)
 
-![Alzheimer’s Disease BCE Loss](image/ADLoss.png)
 
-![Parkinson's Disease BCE Loss](image/PDloss.png)
-![Frontotemporal dementia BCE Loss](image/FTDLoss.png)
-![Mild Cognitive Impairment](image/MCILoss.png)
-![Early Mild Cognitive Impairment](image/EMCILoss.png)
-![Late Mild Cognitive Impairment](image/LMCIloss.png)
+These plots highlight the training dynamics across different disease. Consistent patterns in the loss curves suggest that the training process is stable and ther is no precence of oferfitting for single disease.
 
-Analysis
-
-These plots highlight the training dynamics across different runs. Consistent patterns in the loss curves suggest that the training process is stable and reproducible.
-Adding More Images
-
-To add more images, place them in the appropriate directory and update the paths in the markdown as shown above. Ensure each image has a brief description to provide context.
-Conclusion
-
-By examining these images, researchers can gain deeper insights into the model's training process and verify the stability and reproducibility of the results.
