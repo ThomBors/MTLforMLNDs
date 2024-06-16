@@ -5,25 +5,6 @@
 This repository is the official __PyTorch__ implementation of our work: __Multi-task Deep Learning for the Multi-label Prediction of Neurodegenerative Diseases__, Submitted at J-BHI Special Issue on “Current Trends and Future Directions in Biomedical Data Science”, 2024.
 
 ## Set up
-### Enviroment
-All our experiments are implemented in python and based on the PyTorch framework, using a 24G NVIDIA RTX A5000 GPU.
-
-The list of requirement packages can be found in the file requirments.txt.
-
-### Data preparation
-The data used in this paper are freely available from each of the data repositories we consulted.
-
-Due to the data policies of the data repository, we are not allowed to share the original data and our pre-processed data. Therefore, in order to reproduce the data used in our experiment, it is necessary to download the original MRI scans from:
-
-* [Alzheimer’s Disease Neuroimaging Initiative (ADNI)](https://adni.loni.usc.edu/)
-* [Australian Imaging, Biomarker and Lifestyle (AIBL)](https://aibl.org.au/)
-* [Information eXtraction from Images (IXI)](https://brain-development.org/ixi-dataset/)
-* [Neuroimaging in Frontotemporal Dementia (NIFD)](https://ida.loni.usc.edu/login.jsp)
-* [Parkinson's Progression Markers Initiative (PPMI)](https://www.ppmi-info.org/)
-
-
-The data must then be processed using the [FreeSurfer softwer](https://surfer.nmr.mgh.harvard.edu/). All the detailed steps are described in the Materials and Methods section of the paper.
-
 ### Dependency
 
 To set up the environment and run the experiments, make sure you have Python 3.7 or later. Clone this repository and install the dependencies.
@@ -103,3 +84,52 @@ Similarly, for the deplyment of the model, where it is necessary to run `run_dep
   $ cd MTLDeploy
   $ python run_dep.py
   ``` 
+
+
+## Reproducibility
+### Environment
+
+All our experiments are implemented in Python and based on the PyTorch framework, using a 24G NVIDIA RTX A5000 GPU.
+
+The list of required packages can be found in the file requirements.txt.
+
+### Data Preparation
+
+The data used in this paper are freely available from each of the data repositories we consulted.
+
+Due to the data policies of the data repositories, we are not allowed to share the original data and our pre-processed data. Therefore, to reproduce the data used in our experiments, it is necessary to download the original MRI scans from:
+
+* [Alzheimer’s Disease Neuroimaging Initiative (ADNI)](https://adni.loni.usc.edu/)
+* [Australian Imaging, Biomarker and Lifestyle (AIBL)](https://aibl.org.au/)
+* [Information eXtraction from Images (IXI)](https://brain-development.org/ixi-dataset/)
+* [Neuroimaging in Frontotemporal Dementia (NIFD)](https://ida.loni.usc.edu/login.jsp)
+* [Parkinson's Progression Markers Initiative (PPMI)](https://www.ppmi-info.org/)
+
+
+The data must then be processed using the [FreeSurfer softwer](https://surfer.nmr.mgh.harvard.edu/). All the detailed steps are described in the Materials and Methods section of the paper.
+
+For reproducibility purposes, the file MRI_id.csv provides the IDs of the images used for the experiments.
+
+
+## Training Loss
+
+Below, are provided additional images showing the training loss over steps for each of the disease considered. These images can help in understanding the convergence behavior and performance of the model.
+
+
+![Alzheimer’s Disease BCE Loss](image/ADLoss.png)
+
+![Parkinson's Disease BCE Loss](image/PDloss.png)
+![Frontotemporal dementia BCE Loss](image/FTDLoss.png)
+![Mild Cognitive Impairment](image/MCILoss.png)
+![Early Mild Cognitive Impairment](image/EMCILoss.png)
+![Late Mild Cognitive Impairment](image/LMCIloss.png)
+
+Analysis
+
+These plots highlight the training dynamics across different runs. Consistent patterns in the loss curves suggest that the training process is stable and reproducible.
+Adding More Images
+
+To add more images, place them in the appropriate directory and update the paths in the markdown as shown above. Ensure each image has a brief description to provide context.
+Conclusion
+
+By examining these images, researchers can gain deeper insights into the model's training process and verify the stability and reproducibility of the results.
