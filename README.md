@@ -39,13 +39,13 @@ MTLforMLNDs
     └── run_dep.py
 ```
 
-This folder contains the code the networks and the results of the experiments conducted. The data in this folder are splitted in there folds (traiing set, validation set and test sted) therfore the results are reporte either for the validation set as well for the test set.
+This folder contains the code, the networks, and the results of the experiments conducted. The data in this folder are split into folders (training set, validation set, and test set); therefore, the results are reported for both the validation set and the test set.
 
 As mentioned in the paper, we take into account the results from the validation set in this face in order not to introduce any bias on the test set.
 
 The STL folder contains code to train and test all the different single-task networks discussed in the paper, the main results are in the `experiments_stl` folder, the other folders report the results for the larger network trained for 50 epochs `experiments_AlternativeNet50` and for 500 epochs `experiments_AlternativeNet500`.
 
-The MTL folder contains the code to train and test the different tuning techniques presented in the paper, the `experiments_mtl` folder contains the result of the __TSTL-Tuning-EarlyStop__, while the `experiments_all` folder contains the results of the other experiments.
+The MTL folder contains the code to train and test the different tuning techniques presented in the paper, and the `experiments_mtl` folder contains the result of the __TSTL-Tuning-EarlyStop__. In contrast, the `experiments_all` folder contains the results of the other experiments.
 
 #### MTLDeploy
 
@@ -69,7 +69,7 @@ The folder structure is mostly similar to the previous one, with the exception o
 
 ## Training
 
-To train the models for the experiments in the MTLExpriments folder, all that is required is to run `run_exp.py'.
+To train the models for the experiments in the MTLExpriments folder, run `run_exp.py'.
 
 
   ```bash
@@ -78,7 +78,7 @@ To train the models for the experiments in the MTLExpriments folder, all that is
   ``` 
 
 
-Similarly, for the deplyment of the model, where it is necessary to run `run_dep.py` 
+Similarly, for the deployment of the model, where it is necessary to run `run_dep.py` 
 
   ```bash
   $ cd MTLDeploy
@@ -113,7 +113,7 @@ For reproducibility purposes, the file MRI_id.csv provides the IDs of the images
 
 ## Training Loss
 
-Below, are provided additional images showing the training loss over steps for each of the disease considered. These images can help in understanding the convergence behavior and performance of the model.
+Below are provided additional images showing the training loss over steps for each of the diseases considered. These images can help understand the model's convergence behaviour and performance.
 
 | | | |
 |-|-|-|
@@ -121,5 +121,5 @@ Below, are provided additional images showing the training loss over steps for e
 ![Mild Cognitive Impairment](image/MCILoss.png) | ![Early Mild Cognitive Impairment](image/EMCILoss.png) | ![Late Mild Cognitive Impairment](image/LMCIloss.png)
 
 
-These plots highlight the training dynamics across different disease. Consistent patterns in the loss curves suggest that the training process is stable and ther is no precence of oferfitting for single disease.
+These plots highlight the training dynamics across different diseases. Consistent patterns in the loss curves suggest that the training process is stable, and there is no overfitting for a single disease.
 
